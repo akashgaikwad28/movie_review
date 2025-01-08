@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Review Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Review Analyzer</h1>
+        
+        <form method="post">
+            <textarea name="review" rows="4" placeholder="Enter your movie review here..." required>{{ review if review }}</textarea>
+            <button type="submit">Analyze Review</button>
+        </form>
+
+        {% if result %}
+        <div class="result-card {{ result.lower() }}">
+            <h2>Analysis Result:</h2>
+            <p class="review-text">{{ review }}</p>
+            <p class="sentiment">Sentiment: {{ result }}</p>
+            <p class="polarity">Polarity Score: {{ polarity }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
